@@ -7,23 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		48B5A5D4102096C4036F8347 /* Pods_ArtExplorer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C53627ACDC2FA4D9DB0BF00F /* Pods_ArtExplorer.framework */; };
 		7858A7FF2BBA40D900127F75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7858A7FE2BBA40D900127F75 /* AppDelegate.swift */; };
 		7858A8012BBA40D900127F75 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7858A8002BBA40D900127F75 /* SceneDelegate.swift */; };
-		7858A8032BBA40D900127F75 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7858A8022BBA40D900127F75 /* ViewController.swift */; };
 		7858A8062BBA40D900127F75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7858A8042BBA40D900127F75 /* Main.storyboard */; };
 		7858A8082BBA40DB00127F75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7858A8072BBA40DB00127F75 /* Assets.xcassets */; };
 		7858A80B2BBA40DB00127F75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7858A8092BBA40DB00127F75 /* LaunchScreen.storyboard */; };
+		7858A8162BBA454E00127F75 /* Art.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7858A8152BBA454E00127F75 /* Art.swift */; };
+		7858A8182BBA763500127F75 /* RecommendationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7858A8172BBA763400127F75 /* RecommendationsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		055AEF65631709EC386F760C /* Pods-ArtExplorer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtExplorer.release.xcconfig"; path = "Target Support Files/Pods-ArtExplorer/Pods-ArtExplorer.release.xcconfig"; sourceTree = "<group>"; };
+		2262C1CCD3EA35B22DAA98BD /* Pods-ArtExplorer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtExplorer.debug.xcconfig"; path = "Target Support Files/Pods-ArtExplorer/Pods-ArtExplorer.debug.xcconfig"; sourceTree = "<group>"; };
 		7858A7FB2BBA40D900127F75 /* ArtExplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtExplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7858A7FE2BBA40D900127F75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7858A8002BBA40D900127F75 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7858A8022BBA40D900127F75 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7858A8052BBA40D900127F75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7858A8072BBA40DB00127F75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7858A80A2BBA40DB00127F75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7858A80C2BBA40DB00127F75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7858A8152BBA454E00127F75 /* Art.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Art.swift; sourceTree = "<group>"; };
+		7858A8172BBA763400127F75 /* RecommendationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsViewController.swift; sourceTree = "<group>"; };
+		C53627ACDC2FA4D9DB0BF00F /* Pods_ArtExplorer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArtExplorer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +37,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48B5A5D4102096C4036F8347 /* Pods_ArtExplorer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7432BF7D1204B9FAD0E98735 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C53627ACDC2FA4D9DB0BF00F /* Pods_ArtExplorer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7858A7F22BBA40D900127F75 = {
 			isa = PBXGroup;
 			children = (
 				7858A7FD2BBA40D900127F75 /* ArtExplorer */,
 				7858A7FC2BBA40D900127F75 /* Products */,
+				831C821E01BEF4D8F1C0D87C /* Pods */,
+				7432BF7D1204B9FAD0E98735 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +73,50 @@
 		7858A7FD2BBA40D900127F75 /* ArtExplorer */ = {
 			isa = PBXGroup;
 			children = (
+				7858A8142BBA421C00127F75 /* Resources */,
+				7858A8132BBA41F400127F75 /* View Contollers */,
+				7858A8122BBA41E700127F75 /* Data Models */,
 				7858A7FE2BBA40D900127F75 /* AppDelegate.swift */,
 				7858A8002BBA40D900127F75 /* SceneDelegate.swift */,
-				7858A8022BBA40D900127F75 /* ViewController.swift */,
 				7858A8042BBA40D900127F75 /* Main.storyboard */,
-				7858A8072BBA40DB00127F75 /* Assets.xcassets */,
 				7858A8092BBA40DB00127F75 /* LaunchScreen.storyboard */,
 				7858A80C2BBA40DB00127F75 /* Info.plist */,
 			);
 			path = ArtExplorer;
+			sourceTree = "<group>";
+		};
+		7858A8122BBA41E700127F75 /* Data Models */ = {
+			isa = PBXGroup;
+			children = (
+				7858A8152BBA454E00127F75 /* Art.swift */,
+			);
+			path = "Data Models";
+			sourceTree = "<group>";
+		};
+		7858A8132BBA41F400127F75 /* View Contollers */ = {
+			isa = PBXGroup;
+			children = (
+				7858A8172BBA763400127F75 /* RecommendationsViewController.swift */,
+			);
+			path = "View Contollers";
+			sourceTree = "<group>";
+		};
+		7858A8142BBA421C00127F75 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7858A8072BBA40DB00127F75 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		831C821E01BEF4D8F1C0D87C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2262C1CCD3EA35B22DAA98BD /* Pods-ArtExplorer.debug.xcconfig */,
+				055AEF65631709EC386F760C /* Pods-ArtExplorer.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +126,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7858A80F2BBA40DB00127F75 /* Build configuration list for PBXNativeTarget "ArtExplorer" */;
 			buildPhases = (
+				06009C65B6E4689A2ACAB52F /* [CP] Check Pods Manifest.lock */,
 				7858A7F72BBA40D900127F75 /* Sources */,
 				7858A7F82BBA40D900127F75 /* Frameworks */,
 				7858A7F92BBA40D900127F75 /* Resources */,
+				A9C155E576AD9BD7F68C1233 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -133,14 +187,57 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		06009C65B6E4689A2ACAB52F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ArtExplorer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A9C155E576AD9BD7F68C1233 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ArtExplorer/Pods-ArtExplorer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ArtExplorer/Pods-ArtExplorer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ArtExplorer/Pods-ArtExplorer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7858A7F72BBA40D900127F75 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7858A8032BBA40D900127F75 /* ViewController.swift in Sources */,
 				7858A7FF2BBA40D900127F75 /* AppDelegate.swift in Sources */,
+				7858A8182BBA763500127F75 /* RecommendationsViewController.swift in Sources */,
 				7858A8012BBA40D900127F75 /* SceneDelegate.swift in Sources */,
+				7858A8162BBA454E00127F75 /* Art.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +384,7 @@
 		};
 		7858A8102BBA40DB00127F75 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2262C1CCD3EA35B22DAA98BD /* Pods-ArtExplorer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -314,6 +412,7 @@
 		};
 		7858A8112BBA40DB00127F75 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 055AEF65631709EC386F760C /* Pods-ArtExplorer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
