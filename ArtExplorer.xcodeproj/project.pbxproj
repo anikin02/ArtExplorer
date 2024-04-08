@@ -21,6 +21,7 @@
 		7858A8232BBB776300127F75 /* RecomendationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7858A8222BBB776300127F75 /* RecomendationTableViewCell.swift */; };
 		78703E832BC3C323001DDA87 /* ProfileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78703E822BC3C323001DDA87 /* ProfileInfo.swift */; };
 		78703E852BC3C4B3001DDA87 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78703E842BC3C4B3001DDA87 /* Collection.swift */; };
+		78703E872BC410DB001DDA87 /* Study.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78703E862BC410DB001DDA87 /* Study.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		7858A8222BBB776300127F75 /* RecomendationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecomendationTableViewCell.swift; sourceTree = "<group>"; };
 		78703E822BC3C323001DDA87 /* ProfileInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfo.swift; sourceTree = "<group>"; };
 		78703E842BC3C4B3001DDA87 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
+		78703E862BC410DB001DDA87 /* Study.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Study.swift; sourceTree = "<group>"; };
 		C53627ACDC2FA4D9DB0BF00F /* Pods_ArtExplorer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArtExplorer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -102,6 +104,7 @@
 				7858A8152BBA454E00127F75 /* Art.swift */,
 				78703E822BC3C323001DDA87 /* ProfileInfo.swift */,
 				78703E842BC3C4B3001DDA87 /* Collection.swift */,
+				78703E862BC410DB001DDA87 /* Study.swift */,
 			);
 			path = "Data Models";
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				7858A81B2BBAE47D00127F75 /* StudyViewController.swift in Sources */,
 				7858A81F2BBAE4CF00127F75 /* ProfileViewContoller.swift in Sources */,
 				7858A7FF2BBA40D900127F75 /* AppDelegate.swift in Sources */,
+				78703E872BC410DB001DDA87 /* Study.swift in Sources */,
 				7858A81D2BBAE4AA00127F75 /* EventsViewConroller.swift in Sources */,
 				7858A8232BBB776300127F75 /* RecomendationTableViewCell.swift in Sources */,
 				78703E852BC3C4B3001DDA87 /* Collection.swift in Sources */,
