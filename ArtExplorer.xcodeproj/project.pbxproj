@@ -10,11 +10,17 @@
 		48B5A5D4102096C4036F8347 /* Pods_ArtExplorer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C53627ACDC2FA4D9DB0BF00F /* Pods_ArtExplorer.framework */; };
 		7858A7FF2BBA40D900127F75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7858A7FE2BBA40D900127F75 /* AppDelegate.swift */; };
 		7858A8012BBA40D900127F75 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7858A8002BBA40D900127F75 /* SceneDelegate.swift */; };
-		7858A8062BBA40D900127F75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7858A8042BBA40D900127F75 /* Main.storyboard */; };
 		7858A8082BBA40DB00127F75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7858A8072BBA40DB00127F75 /* Assets.xcassets */; };
 		7858A80B2BBA40DB00127F75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7858A8092BBA40DB00127F75 /* LaunchScreen.storyboard */; };
 		7858A8162BBA454E00127F75 /* Art.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7858A8152BBA454E00127F75 /* Art.swift */; };
 		7858A8182BBA763500127F75 /* RecommendationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7858A8172BBA763400127F75 /* RecommendationsViewController.swift */; };
+		7858A81B2BBAE47D00127F75 /* StudyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7858A81A2BBAE47D00127F75 /* StudyViewController.swift */; };
+		7858A81D2BBAE4AA00127F75 /* EventsViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7858A81C2BBAE4AA00127F75 /* EventsViewConroller.swift */; };
+		7858A81F2BBAE4CF00127F75 /* ProfileViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7858A81E2BBAE4CF00127F75 /* ProfileViewContoller.swift */; };
+		7858A8212BBAE56600127F75 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7858A8202BBAE56600127F75 /* TabBarController.swift */; };
+		7858A8232BBB776300127F75 /* RecomendationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7858A8222BBB776300127F75 /* RecomendationTableViewCell.swift */; };
+		78703E832BC3C323001DDA87 /* ProfileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78703E822BC3C323001DDA87 /* ProfileInfo.swift */; };
+		78703E852BC3C4B3001DDA87 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78703E842BC3C4B3001DDA87 /* Collection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,12 +29,18 @@
 		7858A7FB2BBA40D900127F75 /* ArtExplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtExplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7858A7FE2BBA40D900127F75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7858A8002BBA40D900127F75 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7858A8052BBA40D900127F75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7858A8072BBA40DB00127F75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7858A80A2BBA40DB00127F75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7858A80C2BBA40DB00127F75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7858A8152BBA454E00127F75 /* Art.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Art.swift; sourceTree = "<group>"; };
 		7858A8172BBA763400127F75 /* RecommendationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsViewController.swift; sourceTree = "<group>"; };
+		7858A81A2BBAE47D00127F75 /* StudyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyViewController.swift; sourceTree = "<group>"; };
+		7858A81C2BBAE4AA00127F75 /* EventsViewConroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewConroller.swift; sourceTree = "<group>"; };
+		7858A81E2BBAE4CF00127F75 /* ProfileViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewContoller.swift; sourceTree = "<group>"; };
+		7858A8202BBAE56600127F75 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		7858A8222BBB776300127F75 /* RecomendationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecomendationTableViewCell.swift; sourceTree = "<group>"; };
+		78703E822BC3C323001DDA87 /* ProfileInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfo.swift; sourceTree = "<group>"; };
+		78703E842BC3C4B3001DDA87 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		C53627ACDC2FA4D9DB0BF00F /* Pods_ArtExplorer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArtExplorer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -78,7 +90,6 @@
 				7858A8122BBA41E700127F75 /* Data Models */,
 				7858A7FE2BBA40D900127F75 /* AppDelegate.swift */,
 				7858A8002BBA40D900127F75 /* SceneDelegate.swift */,
-				7858A8042BBA40D900127F75 /* Main.storyboard */,
 				7858A8092BBA40DB00127F75 /* LaunchScreen.storyboard */,
 				7858A80C2BBA40DB00127F75 /* Info.plist */,
 			);
@@ -89,6 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				7858A8152BBA454E00127F75 /* Art.swift */,
+				78703E822BC3C323001DDA87 /* ProfileInfo.swift */,
+				78703E842BC3C4B3001DDA87 /* Collection.swift */,
 			);
 			path = "Data Models";
 			sourceTree = "<group>";
@@ -97,6 +110,11 @@
 			isa = PBXGroup;
 			children = (
 				7858A8172BBA763400127F75 /* RecommendationsViewController.swift */,
+				7858A81A2BBAE47D00127F75 /* StudyViewController.swift */,
+				7858A81C2BBAE4AA00127F75 /* EventsViewConroller.swift */,
+				7858A81E2BBAE4CF00127F75 /* ProfileViewContoller.swift */,
+				7858A8202BBAE56600127F75 /* TabBarController.swift */,
+				7858A8222BBB776300127F75 /* RecomendationTableViewCell.swift */,
 			);
 			path = "View Contollers";
 			sourceTree = "<group>";
@@ -115,7 +133,6 @@
 				2262C1CCD3EA35B22DAA98BD /* Pods-ArtExplorer.debug.xcconfig */,
 				055AEF65631709EC386F760C /* Pods-ArtExplorer.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -131,6 +148,7 @@
 				7858A7F82BBA40D900127F75 /* Frameworks */,
 				7858A7F92BBA40D900127F75 /* Resources */,
 				A9C155E576AD9BD7F68C1233 /* [CP] Embed Pods Frameworks */,
+				7858A8192BBA9D0500127F75 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -181,7 +199,6 @@
 			files = (
 				7858A80B2BBA40DB00127F75 /* LaunchScreen.storyboard in Resources */,
 				7858A8082BBA40DB00127F75 /* Assets.xcassets in Resources */,
-				7858A8062BBA40D900127F75 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,6 +227,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		7858A8192BBA9D0500127F75 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "
+";
+		};
 		A9C155E576AD9BD7F68C1233 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -234,9 +269,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7858A81B2BBAE47D00127F75 /* StudyViewController.swift in Sources */,
+				7858A81F2BBAE4CF00127F75 /* ProfileViewContoller.swift in Sources */,
 				7858A7FF2BBA40D900127F75 /* AppDelegate.swift in Sources */,
+				7858A81D2BBAE4AA00127F75 /* EventsViewConroller.swift in Sources */,
+				7858A8232BBB776300127F75 /* RecomendationTableViewCell.swift in Sources */,
+				78703E852BC3C4B3001DDA87 /* Collection.swift in Sources */,
+				78703E832BC3C323001DDA87 /* ProfileInfo.swift in Sources */,
 				7858A8182BBA763500127F75 /* RecommendationsViewController.swift in Sources */,
 				7858A8012BBA40D900127F75 /* SceneDelegate.swift in Sources */,
+				7858A8212BBAE56600127F75 /* TabBarController.swift in Sources */,
 				7858A8162BBA454E00127F75 /* Art.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -244,14 +286,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		7858A8042BBA40D900127F75 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7858A8052BBA40D900127F75 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		7858A8092BBA40DB00127F75 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -300,7 +334,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -363,7 +397,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -394,9 +428,7 @@
 				INFOPLIST_FILE = ArtExplorer/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -422,9 +454,7 @@
 				INFOPLIST_FILE = ArtExplorer/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

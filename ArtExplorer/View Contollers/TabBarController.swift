@@ -1,5 +1,5 @@
 //
-//  TabBarContoller.swift
+//  TabBarController.swift
 //  ArtExplorer
 //
 //  Created by anikin02 on 01.04.2024.
@@ -7,12 +7,13 @@
 
 import UIKit
 
-class TabBarContoller: UITabBarController {
+class TabBarController: UITabBarController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
     
     generateTabBar()
+    changeColor(tabBarController: self, colorBG: .white, colorTint: .systemPink)
   }
   
   private func generateTabBar() {
@@ -29,7 +30,7 @@ class TabBarContoller: UITabBarController {
       ),
       generateVC(
         viewContoller: RecommendationsViewController(),
-        title: "Recommendations",
+        title: "Home",
         image: UIImage(systemName: "house.fill")
       ),
       generateVC(
@@ -45,5 +46,19 @@ class TabBarContoller: UITabBarController {
     viewContoller.tabBarItem.image = image
     
     return viewContoller
+  }
+  
+  
+  // На будущее, если надо будет поменять цвет фона
+  func changeColor(tabBarController: UITabBarController?, colorBG: UIColor, colorTint: UIColor) {
+    let appearance = UITabBarAppearance()
+    appearance.backgroundColor = colorBG
+    appearance.selectionIndicatorTintColor = colorTint
+    appearance.shadowColor = nil
+    tabBarController?.tabBar.standardAppearance = appearance
+        
+    if #available(iOS 15.0, *) {
+      tabBarController?.tabBar.scrollEdgeAppearance = appearance
+    }
   }
 }
