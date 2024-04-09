@@ -34,13 +34,10 @@ class RecomendationTableViewCell: UITableViewCell {
     dateLabel.text = art.date
     descriptionLabel.text = art.description
     
-    
-    // Test
     let imageView = UIImageView()
     imageView.image = UIImage(named: art.image)
     imageView.contentMode = .scaleAspectFit
     contentView.addSubview(imageView)
-    //
     
     contentView.addSubview(nameLabel)
     contentView.addSubview(authorLabel)
