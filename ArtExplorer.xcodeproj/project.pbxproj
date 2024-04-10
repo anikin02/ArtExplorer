@@ -25,6 +25,7 @@
 		78703E8A2BC4AD85001DDA87 /* EventsViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78703E892BC4AD85001DDA87 /* EventsViewControllerCell.swift */; };
 		78703E8C2BC4ADC8001DDA87 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78703E8B2BC4ADC8001DDA87 /* Event.swift */; };
 		78703E8E2BC4FE30001DDA87 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78703E8D2BC4FE30001DDA87 /* CollectionViewController.swift */; };
+		78703E902BC64204001DDA87 /* AddCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78703E8F2BC64204001DDA87 /* AddCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		78703E892BC4AD85001DDA87 /* EventsViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewControllerCell.swift; sourceTree = "<group>"; };
 		78703E8B2BC4ADC8001DDA87 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		78703E8D2BC4FE30001DDA87 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		78703E8F2BC64204001DDA87 /* AddCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCollectionViewController.swift; sourceTree = "<group>"; };
 		C53627ACDC2FA4D9DB0BF00F /* Pods_ArtExplorer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArtExplorer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -127,6 +129,7 @@
 				7858A8222BBB776300127F75 /* RecomendationTableViewCell.swift */,
 				78703E892BC4AD85001DDA87 /* EventsViewControllerCell.swift */,
 				78703E8D2BC4FE30001DDA87 /* CollectionViewController.swift */,
+				78703E8F2BC64204001DDA87 /* AddCollectionViewController.swift */,
 			);
 			path = "View Contollers";
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78703E902BC64204001DDA87 /* AddCollectionViewController.swift in Sources */,
 				78703E8A2BC4AD85001DDA87 /* EventsViewControllerCell.swift in Sources */,
 				7858A81B2BBAE47D00127F75 /* StudyViewController.swift in Sources */,
 				7858A81F2BBAE4CF00127F75 /* ProfileViewContoller.swift in Sources */,

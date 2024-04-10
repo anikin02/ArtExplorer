@@ -6,10 +6,10 @@
 //
 
 class Event {
-  var name: String
-  var location: String
-  var date: String
-  var description: String
+  let name: String
+  let location: String
+  let date: String
+  let description: String
   
   init(name: String, location: String, date: String, description: String) {
     self.name = name

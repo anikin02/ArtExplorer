@@ -8,8 +8,8 @@
 import Foundation
 
 class Collection {
-  var collection: [Art]
-  var name: String
+  let collection: [Art]
+  let name: String
   
   init(collection: [Art], name: String) {
     self.collection = collection

@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import SnapKit
 
-class ProfileViewContoller: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+class ProfileViewContoller: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UIViewControllerTransitioningDelegate {
   
   private var tableView = UITableView()
   private var profile = ProfileInfo()
@@ -78,13 +79,19 @@ class ProfileViewContoller: UIViewController, UITableViewDelegate, UITableViewDa
   }
   
   @objc func addCollectionButtonTapped() {
-    print("Button tapped!")
+    let addCollectionViewController = AddCollectionViewController()
+    addCollectionViewController.onSave = { name in
+      self.profile.collections.append(Collection(collection: [], name: name))
+      self.tableView.reloadData()
+    }
+    present(addCollectionViewController, animated: true)
   }
   
   private func generateTableView() {
     tableView.delegate = self
     tableView.dataSource = self
-    tableView.allowsSelection = false
+    tableView.allowsSelection = true
+    tableView.isUserInteractionEnabled = true
     tableView.showsVerticalScrollIndicator = false
     view.addSubview(tableView)
     tableView.snp.makeConstraints { maker in
@@ -106,6 +113,13 @@ class ProfileViewContoller: UIViewController, UITableViewDelegate, UITableViewDa
     cell.detailTextLabel?.text = "\(profile.collections[indexPath.row].collection.count) Item"
     
     return cell
+  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    print("HELLo")
+      let selectedCollection = profile.collections[indexPath.row]
+      let collectionVC = CollectionViewController(collection: selectedCollection)
+    show(collectionVC, sender: true)
   }
 
 }

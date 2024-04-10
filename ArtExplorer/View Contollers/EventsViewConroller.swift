@@ -18,7 +18,7 @@ class EventsViewConroller: UIViewController, UITableViewDelegate, UITableViewDat
     view.backgroundColor = .white
     
     // TEST DATA
-    for i in 0...10 {
+    for i in 0...15 {
       eventsCollection.append(Event(name: "Название \(i)", location: "Локация \(i)", date: "Весна 2024", description: "очень интересно"))
     }
     //

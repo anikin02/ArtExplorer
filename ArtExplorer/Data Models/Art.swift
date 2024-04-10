@@ -8,12 +8,12 @@
 import Foundation
 
 class Art {
-  var name: String
-  var author: String
-  var description: String
-  var genre: String
-  var date: String
-  var image: String // : ???
+  let name: String
+  let author: String
+  let description: String
+  let genre: String
+  let date: String
+  let image: String // : ???
   
   init(name: String, author: String, description: String, genre: String, date: String, image: String) {
     self.name = name

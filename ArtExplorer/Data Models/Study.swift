@@ -9,9 +9,9 @@ import Foundation
 
 
 class Study {
-  var name: String
-  var author: String
-  var text: String
+  let name: String
+  let author: String
+  let text: String
   
   init(name: String, author: String, text: String) {
     self.name = name

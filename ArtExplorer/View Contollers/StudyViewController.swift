@@ -19,7 +19,7 @@ class StudyViewController: UIViewController, UITableViewDelegate, UITableViewDat
     view.backgroundColor = .white
     
     // TEST DATA
-    for i in 0...10 {
+    for i in 0...20 {
       studyCollection.append(Study(name: "Название \(i)", author: "Автор \(i)", text: ""))
     }
     //
