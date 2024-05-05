@@ -41,8 +41,5 @@ class CollectionViewController: UIViewController {
     stackView.snp.makeConstraints { make in
       make.centerX.equalTo(view.snp.centerX)
     }
-
   }
-  
-  
 }

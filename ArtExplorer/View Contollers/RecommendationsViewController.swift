@@ -16,11 +16,17 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    generateTableView()
     
+    // TEST DATA
     arts.append(Art(name: "Моно Лиза", author: "Леонардо Да Винчи", description: "Описание", genre: "Какой-то", date: "1503", image: "testImage1"))
     arts.append(Art(name: "Звездная ночь", author: "Ван Гог", description: "Описание", genre: "Какой-то", date: "Июнь 1889 – Июль 1889", image: "testImage2"))
+    //
     
+    generateSafeArea()
+    generateTableView()
+  }
+  
+  private func generateSafeArea() {
     let safeAreaView = UIView()
     safeAreaView.backgroundColor = .white
 
@@ -30,7 +36,6 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
       maker.left.right.equalToSuperview()
       maker.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
     }
-    
   }
   
   private func generateTableView() {

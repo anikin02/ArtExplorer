@@ -2,7 +2,7 @@
 //  AddCollectionViewController.swift
 //  ArtExplorer
 //
-//  Created by Данил Аникин on 10.04.2024.
+//  Created by anikin02 on 10.04.2024.
 //
 
 import UIKit
