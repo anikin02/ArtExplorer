@@ -11,7 +11,8 @@ class EventsViewConroller: UIViewController, UITableViewDelegate, UITableViewDat
   
   private var tableView = UITableView()
   private let searchBar = UISearchBar()
-  private var eventsCollection = [Event]()
+  private var allEventsCollection = [Event]()
+  private var searchEventsCollection = [Event]()
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -19,7 +20,7 @@ class EventsViewConroller: UIViewController, UITableViewDelegate, UITableViewDat
     
     // TEST DATA
     for i in 0...15 {
-      eventsCollection.append(Event(name: "Название \(i)", location: "Локация \(i)", date: "Весна 2024", description: "очень интересно"))
+      allEventsCollection.append(Event(name: "Название \(i)", location: "Локация \(i)", date: "Весна 2024", description: "очень интересно"))
     }
     //
     
@@ -64,11 +65,11 @@ class EventsViewConroller: UIViewController, UITableViewDelegate, UITableViewDat
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return eventsCollection.count
+    return allEventsCollection.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    return EventsViewControllerCell(event: eventsCollection[indexPath.row])
+    return EventsViewControllerCell(event: allEventsCollection[indexPath.row])
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

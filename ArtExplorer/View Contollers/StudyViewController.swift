@@ -11,7 +11,8 @@ class StudyViewController: UIViewController, UITableViewDelegate, UITableViewDat
   
   private var tableView = UITableView()
   private let searchBar = UISearchBar()
-  private var studyCollection = [Study]()
+  private var allStudyCollection = [Study]()
+  private var searchStudyCollection = [Study]()
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -20,7 +21,7 @@ class StudyViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     // TEST DATA
     for i in 0...20 {
-      studyCollection.append(Study(name: "Название \(i)", author: "Автор \(i)", text: ""))
+      allStudyCollection.append(Study(name: "Название \(i)", author: "Автор \(i)", text: ""))
     }
     //
     
@@ -66,15 +67,15 @@ class StudyViewController: UIViewController, UITableViewDelegate, UITableViewDat
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return studyCollection.count
+    return allStudyCollection.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
         
-    cell.textLabel?.text = studyCollection[indexPath.row].name
+    cell.textLabel?.text = allStudyCollection[indexPath.row].name
     
-    cell.detailTextLabel?.text = studyCollection[indexPath.row].author
+    cell.detailTextLabel?.text = allStudyCollection[indexPath.row].author
     
     return cell
   }

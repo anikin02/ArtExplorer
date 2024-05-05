@@ -48,8 +48,6 @@ class TabBarController: UITabBarController {
     return viewContoller
   }
   
-  
-  // На будущее, если надо будет поменять цвет фона
   func changeColor(tabBarController: UITabBarController?, colorBG: UIColor, colorTint: UIColor) {
     let appearance = UITabBarAppearance()
     appearance.backgroundColor = colorBG
