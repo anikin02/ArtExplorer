@@ -17,6 +17,7 @@ class RecomendationTableViewCell: UITableViewCell {
   private var dateLabel = UILabel()
   private var descriptionLabel = UILabel()
   
+  
   init(art: Art) {
     self.art = art
     super.init(style: .default, reuseIdentifier: "RecomendationTableViewController")
@@ -44,10 +45,11 @@ class RecomendationTableViewCell: UITableViewCell {
     contentView.addSubview(dateLabel)
     contentView.addSubview(descriptionLabel)
     
+    
     nameLabel.font = UIFont.boldSystemFont(ofSize: 35)
     
     imageView.snp.makeConstraints { make in
-      make.top.equalTo(contentView.snp.top).offset(8)
+      make.top.equalTo(contentView.snp.top).offset(5)
       make.leading.equalToSuperview()
       make.trailing.equalToSuperview()
       make.height.lessThanOrEqualTo(contentView.snp.height).offset(-125)

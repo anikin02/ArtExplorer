@@ -8,7 +8,7 @@
 import Foundation
 
 class Collection {
-  let collection: [Art]
+  var collection: [Art]
   let name: String
   
   init(collection: [Art], name: String) {

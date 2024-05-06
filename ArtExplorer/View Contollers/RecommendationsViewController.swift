@@ -11,6 +11,7 @@ import SnapKit
 class RecommendationsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
   
   private var tableView = UITableView()
+  private var addInCollectionButton = UIButton()
   
   private var arts: [Art] = []
   
@@ -24,6 +25,7 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
     
     generateSafeArea()
     generateTableView()
+    generateAddInCollectionButton()
   }
   
   private func generateSafeArea() {
@@ -36,6 +38,31 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
       maker.left.right.equalToSuperview()
       maker.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
     }
+  }
+  
+  private func generateAddInCollectionButton() {
+    let image = UIImage(systemName: "plus.circle")
+    addInCollectionButton.setBackgroundImage(image, for: .normal)
+    addInCollectionButton.tintColor = .systemPink
+    addInCollectionButton.addTarget(self, action: #selector(addInCollectionButtonTapped), for: .touchUpInside)
+    addInCollectionButton.imageView?.contentMode = .scaleAspectFit
+    
+    view.addSubview(addInCollectionButton)
+    addInCollectionButton.snp.makeConstraints { make in
+      make.bottom.equalTo(tableView.snp.bottom).offset(-85)
+      make.right.equalToSuperview().offset(-15)
+      make.width.equalTo(50)
+      make.height.equalTo(50)
+    }
+  }
+  
+  @objc private func addInCollectionButtonTapped() {
+    guard let visibleIndexPath = tableView.indexPathsForVisibleRows?.first else {
+      return
+    }
+    let addInCollectionViewController = AddInCollectionViewController()
+    addInCollectionViewController.art = arts[visibleIndexPath.row]
+    present(addInCollectionViewController, animated: true)
   }
   
   private func generateTableView() {

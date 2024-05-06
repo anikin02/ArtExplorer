@@ -38,7 +38,7 @@ class AddCollectionViewController: UIViewController {
     let leftPaddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: nameTextField.frame.height))
     nameTextField.leftView = leftPaddingView
     nameTextField.leftViewMode = .always
-    //nameTextField.layer.cornerRadius = 5.0
+    nameTextField.layer.cornerRadius = 5.0
     
     nameTextField.addTarget(self, action: #selector(textFieldDidBeginEditing(_:)), for: .editingDidBegin)
 

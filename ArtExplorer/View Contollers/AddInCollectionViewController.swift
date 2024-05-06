@@ -1,35 +1,29 @@
 //
-//  ProfileViewContoller.swift
+//  AddInCollectionViewController.swift
 //  ArtExplorer
 //
-//  Created by anikin02 on 01.04.2024.
+//  Created by Данил Аникин on 06.05.2024.
 //
 
 import UIKit
-import SnapKit
 
-class ProfileViewContoller: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UIViewControllerTransitioningDelegate {
-  
+
+class AddInCollectionViewController:  UIViewController, UITableViewDelegate, UITableViewDataSource, UIViewControllerTransitioningDelegate {
   private var tableView = UITableView()
-  private let searchBar = UISearchBar()
   private let addCollectionButton = UIButton()
+  private let safeAreaView = UIView()
+  var art: Art?
 
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .white
+    
     generateSafeArea()
-    generateSearchBar()
     generateTableView()
     generateAddCollectionButton()
   }
   
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    tableView.reloadData()
-  }
-  
   private func generateSafeArea() {
-    let safeAreaView = UIView()
     safeAreaView.backgroundColor = .white
 
     view.addSubview(safeAreaView)
@@ -37,17 +31,6 @@ class ProfileViewContoller: UIViewController, UITableViewDelegate, UITableViewDa
       maker.top.equalTo(view.snp.top)
       maker.left.right.equalToSuperview()
       maker.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
-    }
-  }
-  
-  private func generateSearchBar() {
-    searchBar.delegate = self
-    searchBar.placeholder = "Search..."
-    view.addSubview(searchBar)
-    
-    searchBar.snp.makeConstraints { maker in
-      maker.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-      maker.left.right.equalToSuperview()
     }
   }
   
@@ -85,11 +68,10 @@ class ProfileViewContoller: UIViewController, UITableViewDelegate, UITableViewDa
     tableView.showsVerticalScrollIndicator = false
     view.addSubview(tableView)
     tableView.snp.makeConstraints { maker in
-      maker.top.equalTo(searchBar.snp.bottom)
+      maker.top.equalTo(safeAreaView.snp.bottom)
       maker.left.right.bottom.equalToSuperview()
     }
   }
-  
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return DataModel.collections.count
@@ -106,9 +88,10 @@ class ProfileViewContoller: UIViewController, UITableViewDelegate, UITableViewDa
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-      let selectedCollection = DataModel.collections[indexPath.row]
-      let collectionVC = CollectionViewController(collection: selectedCollection)
-    show(collectionVC, sender: true)
+    let selectedCollection = DataModel.collections[indexPath.row]
+    if let art = self.art {
+      DataModel.collections[indexPath.row].collection.append(art)
+    }
+    dismiss(animated: true)
   }
-
 }
