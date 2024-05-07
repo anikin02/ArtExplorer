@@ -13,7 +13,8 @@ class ProfileViewContoller: UIViewController, UITableViewDelegate, UITableViewDa
   private var tableView = UITableView()
   private let searchBar = UISearchBar()
   private let addCollectionButton = UIButton()
-
+  private var searchCollections = [Collection]()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .white
@@ -31,7 +32,7 @@ class ProfileViewContoller: UIViewController, UITableViewDelegate, UITableViewDa
   private func generateSafeArea() {
     let safeAreaView = UIView()
     safeAreaView.backgroundColor = .white
-
+    
     view.addSubview(safeAreaView)
     safeAreaView.snp.makeConstraints { maker in
       maker.top.equalTo(view.snp.top)
@@ -49,6 +50,30 @@ class ProfileViewContoller: UIViewController, UITableViewDelegate, UITableViewDa
       maker.top.equalTo(view.safeAreaLayoutGuide.snp.top)
       maker.left.right.equalToSuperview()
     }
+  }
+  
+  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    if let searchText = searchBar.text {
+      searchCollections = getSearchCollection(key: searchText)
+    }
+    if searchCollections.count > 0 {
+      tableView.reloadData()
+      searchBar.showsCancelButton = true
+      if let cancelButton = searchBar.value(forKey: "cancelButton") as? UIButton {
+        cancelButton.setTitleColor(.systemPink, for: .normal)
+      }
+    } else {
+      searchBar.text = ""
+    }
+    searchBar.resignFirstResponder()
+  }
+  
+  func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    searchBar.text = ""
+    searchCollections = []
+    searchBar.resignFirstResponder()
+    tableView.reloadData()
+    searchBar.setShowsCancelButton(false, animated: true)
   }
   
   private func generateAddCollectionButton() {
@@ -77,6 +102,16 @@ class ProfileViewContoller: UIViewController, UITableViewDelegate, UITableViewDa
     present(addCollectionViewController, animated: true)
   }
   
+  func getSearchCollection(key: String) -> [Collection] {
+    var result = [Collection]()
+    for collection in DataModel.collections {
+      if collection.name.lowercased().contains(key.lowercased()) {
+        result.append(collection)
+      }
+    }
+    return result
+  }
+  
   private func generateTableView() {
     tableView.delegate = self
     tableView.dataSource = self
@@ -92,23 +127,41 @@ class ProfileViewContoller: UIViewController, UITableViewDelegate, UITableViewDa
   
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return DataModel.collections.count
+    if searchCollections.count > 0 {
+      return searchCollections.count
+    } else { return DataModel.collections.count }
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
-        
-    cell.textLabel?.text = DataModel.collections[indexPath.row].name
+    var collections = [Collection]()
     
-    cell.detailTextLabel?.text = "\(DataModel.collections[indexPath.row].collection.count) Item"
+    if searchCollections.count > 0 {
+      collections = searchCollections
+    } else {
+      collections = DataModel.collections
+    }
+    
+    let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
+    
+    cell.textLabel?.text = collections[indexPath.row].name
+    
+    cell.detailTextLabel?.text = "\(collections[indexPath.row].collection.count) Item"
     
     return cell
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-      let selectedCollection = DataModel.collections[indexPath.row]
-      let collectionVC = CollectionViewController(collection: selectedCollection)
+    var collections = [Collection]()
+    
+    if searchCollections.count > 0 {
+      collections = searchCollections
+    } else {
+      collections = DataModel.collections
+    }
+    
+    let selectedCollection = collections[indexPath.row]
+    let collectionVC = CollectionViewController(collection: selectedCollection)
     show(collectionVC, sender: true)
   }
-
+  
 }

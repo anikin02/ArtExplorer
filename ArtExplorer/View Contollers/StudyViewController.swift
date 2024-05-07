@@ -54,6 +54,40 @@ class StudyViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
   }
   
+  private func getSearchStudyCollection(key: String) -> [Study] {
+    var result = [Study]()
+    for study in allStudyCollection {
+      if study.name.lowercased().contains(key.lowercased()) {
+        result.append(study)
+      }
+    }
+    return result
+  }
+  
+  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    if let searchText = searchBar.text {
+      searchStudyCollection = getSearchStudyCollection(key: searchText)
+    }
+    if searchStudyCollection.count > 0 {
+      tableView.reloadData()
+      searchBar.showsCancelButton = true
+      if let cancelButton = searchBar.value(forKey: "cancelButton") as? UIButton {
+        cancelButton.setTitleColor(.systemPink, for: .normal)
+      }
+    } else {
+      searchBar.text = ""
+    }
+    searchBar.resignFirstResponder()
+  }
+  
+  func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    searchBar.text = ""
+    searchStudyCollection = []
+    searchBar.resignFirstResponder()
+    tableView.reloadData()
+    searchBar.setShowsCancelButton(false, animated: true)
+  }
+  
   private func generateTableView() {
     tableView.delegate = self
     tableView.dataSource = self
@@ -67,15 +101,24 @@ class StudyViewController: UIViewController, UITableViewDelegate, UITableViewDat
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return allStudyCollection.count
+    if searchStudyCollection.count > 0 {
+      return searchStudyCollection.count
+    } else {
+      return allStudyCollection.count
+    }
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
-        
-    cell.textLabel?.text = allStudyCollection[indexPath.row].name
     
-    cell.detailTextLabel?.text = allStudyCollection[indexPath.row].author
+    let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
+    
+    if searchStudyCollection.count > 0 {
+      cell.textLabel?.text = searchStudyCollection[indexPath.row].name
+      cell.detailTextLabel?.text = searchStudyCollection[indexPath.row].author
+    } else {
+      cell.textLabel?.text = allStudyCollection[indexPath.row].name
+      cell.detailTextLabel?.text = allStudyCollection[indexPath.row].author
+    }
     
     return cell
   }

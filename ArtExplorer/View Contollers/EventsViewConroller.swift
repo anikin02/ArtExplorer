@@ -52,6 +52,40 @@ class EventsViewConroller: UIViewController, UITableViewDelegate, UITableViewDat
     }
   }
   
+  func getSearchEventsCollection(key: String) -> [Event] {
+    var result = [Event]()
+    for event in allEventsCollection {
+      if event.name.lowercased().contains(key.lowercased()) {
+        result.append(event)
+      }
+    }
+    return result
+  }
+  
+  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    if let searchText = searchBar.text {
+      searchEventsCollection = getSearchEventsCollection(key: searchText)
+    }
+    if searchEventsCollection.count > 0 {
+      tableView.reloadData()
+      searchBar.showsCancelButton = true
+      if let cancelButton = searchBar.value(forKey: "cancelButton") as? UIButton {
+        cancelButton.setTitleColor(.systemPink, for: .normal)
+      }
+    } else {
+      searchBar.text = ""
+    }
+    searchBar.resignFirstResponder()
+  }
+  
+  func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    searchBar.text = ""
+    searchEventsCollection = []
+    searchBar.resignFirstResponder()
+    tableView.reloadData()
+    searchBar.setShowsCancelButton(false, animated: true)
+  }
+  
   private func generateTableView() {
     tableView.delegate = self
     tableView.dataSource = self
@@ -65,11 +99,15 @@ class EventsViewConroller: UIViewController, UITableViewDelegate, UITableViewDat
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return allEventsCollection.count
+    if searchEventsCollection.count > 0 {
+      return searchEventsCollection.count
+    } else { return allEventsCollection.count }
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    return EventsViewControllerCell(event: allEventsCollection[indexPath.row])
+    if searchEventsCollection.count > 0 {
+      return EventsViewControllerCell(event: searchEventsCollection[indexPath.row])
+    } else { return EventsViewControllerCell(event: allEventsCollection[indexPath.row]) }
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
