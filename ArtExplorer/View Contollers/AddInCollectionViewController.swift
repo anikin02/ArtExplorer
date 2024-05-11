@@ -88,7 +88,6 @@ class AddInCollectionViewController:  UIViewController, UITableViewDelegate, UIT
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let selectedCollection = DataModel.collections[indexPath.row]
     if let art = self.art {
       DataModel.collections[indexPath.row].collection.append(art)
     }

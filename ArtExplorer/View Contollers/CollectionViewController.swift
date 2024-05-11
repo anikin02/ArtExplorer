@@ -10,6 +10,7 @@ import SnapKit
 
 class CollectionViewController: UIViewController {
   let stackView = UIStackView()
+  let scrollView = UIScrollView()
   let collection: Collection
   
   init(collection: Collection) {
@@ -21,10 +22,12 @@ class CollectionViewController: UIViewController {
     fatalError("init(coder:) has not been implemented")
   }
   
-  
   override func viewDidLoad() {
     super.viewDidLoad()
-    stackView.axis = .horizontal
+    
+    scrollView.translatesAutoresizingMaskIntoConstraints = false
+    
+    stackView.axis = .vertical
     stackView.alignment = .fill
     stackView.distribution = .fillEqually
     stackView.spacing = 10
@@ -34,12 +37,22 @@ class CollectionViewController: UIViewController {
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit
         stackView.addArrangedSubview(imageView)
+        imageView.snp.makeConstraints { maker in
+          maker.height.equalTo(300)
+        }
       }
     }
-    view.addSubview(stackView)
     
-    stackView.snp.makeConstraints { make in
-      make.centerX.equalTo(view.snp.centerX)
+    view.addSubview(scrollView)
+    scrollView.snp.makeConstraints { maker in
+      maker.edges.equalToSuperview()
+    }
+    
+    scrollView.addSubview(stackView)
+    
+    stackView.snp.makeConstraints { maker in
+      maker.edges.equalToSuperview()
+      maker.width.equalToSuperview()
     }
   }
 }

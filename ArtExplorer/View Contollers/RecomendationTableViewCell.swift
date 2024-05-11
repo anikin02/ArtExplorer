@@ -14,8 +14,7 @@ class RecomendationTableViewCell: UITableViewCell {
   
   private var nameLabel = UILabel()
   private var authorLabel = UILabel()
-  private var dateLabel = UILabel()
-  private var descriptionLabel = UILabel()
+  private var descriptionButton = UIButton(type: .system)
   
   
   init(art: Art) {
@@ -32,8 +31,9 @@ class RecomendationTableViewCell: UITableViewCell {
   private func initialize() {
     nameLabel.text = art.name
     authorLabel.text = art.author
-    dateLabel.text = art.date
-    descriptionLabel.text = art.description
+    descriptionButton.setTitle("Learn More", for: .normal)
+    descriptionButton.sizeToFit()
+    descriptionButton.tintColor = .systemPink
     
     let imageView = UIImageView()
     imageView.image = UIImage(named: art.image)
@@ -42,17 +42,15 @@ class RecomendationTableViewCell: UITableViewCell {
     
     contentView.addSubview(nameLabel)
     contentView.addSubview(authorLabel)
-    contentView.addSubview(dateLabel)
-    contentView.addSubview(descriptionLabel)
+    contentView.addSubview(descriptionButton)
     
     
     nameLabel.font = UIFont.boldSystemFont(ofSize: 35)
     
     imageView.snp.makeConstraints { make in
-      make.top.equalTo(contentView.snp.top).offset(5)
-      make.leading.equalToSuperview()
-      make.trailing.equalToSuperview()
-      make.height.lessThanOrEqualTo(contentView.snp.height).offset(-125)
+      make.top.equalToSuperview().offset(-10)
+      make.centerX.equalTo(contentView.snp.centerX)
+      make.height.lessThanOrEqualTo(contentView.snp.height).offset(-200)
     }
     
     nameLabel.snp.makeConstraints { make in
@@ -67,19 +65,9 @@ class RecomendationTableViewCell: UITableViewCell {
       make.trailing.equalTo(contentView.snp.trailing).offset(-16)
     }
     
-    dateLabel.snp.makeConstraints { make in
+    descriptionButton.snp.makeConstraints { make in
       make.top.equalTo(authorLabel.snp.bottom).offset(8)
       make.leading.equalTo(contentView.snp.leading).offset(16)
-      make.trailing.equalTo(contentView.snp.trailing).offset(-16)
     }
-    
-    descriptionLabel.snp.makeConstraints { make in
-      make.top.equalTo(dateLabel.snp.bottom).offset(8)
-      make.leading.equalTo(contentView.snp.leading).offset(16)
-      make.trailing.equalTo(contentView.snp.trailing).offset(-16)
-    }
-
-    
   }
-  
 }

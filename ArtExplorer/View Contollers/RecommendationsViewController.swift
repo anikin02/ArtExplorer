@@ -8,15 +8,17 @@
 import UIKit
 import SnapKit
 
-class RecommendationsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class RecommendationsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
   
   private var tableView = UITableView()
   private var addInCollectionButton = UIButton()
+  private var searchBar = UISearchBar()
   
   private var arts: [Art] = []
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    view.backgroundColor = .white
     
     // TEST DATA
     arts.append(Art(name: "Моно Лиза", author: "Леонардо Да Винчи", description: "Описание", genre: "Какой-то", date: "1503", image: "testImage1"))
@@ -24,10 +26,58 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
     //
     
     generateSafeArea()
+    generateSearchBar()
     generateTableView()
     generateAddInCollectionButton()
   }
   
+  // MARK: - Search Bar
+  private func generateSearchBar() {
+    searchBar.delegate = self
+    searchBar.placeholder = "Search..."
+    view.addSubview(searchBar)
+    
+    searchBar.snp.makeConstraints { maker in
+      maker.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+      maker.left.right.equalToSuperview()
+    }
+  }
+  
+  private func getSearchArtCollection(key: String) -> [Art] {
+    var result = [Art]()
+    for art in arts {
+      if art.name.lowercased().contains(key.lowercased()) ||
+          art.author.lowercased().contains(key.lowercased()) ||
+          art.genre.lowercased().contains(key.lowercased()) {
+        result.append(art)
+      }
+    }
+    return result
+  }
+  
+  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    var searchArtCollection = [Art]()
+    if let searchText = searchBar.text {
+      searchArtCollection = getSearchArtCollection(key: searchText)
+    }
+    
+    if searchArtCollection.count > 0 {
+      let searchView = CollectionViewController(collection: Collection(collection: searchArtCollection, name: ""))
+      
+      present(searchView, animated: true)
+      searchBar.text = ""
+    }
+    searchBar.resignFirstResponder()
+  }
+//  
+//  func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+//    searchBar.text = ""
+//    searchStudyCollection = []
+//    searchBar.resignFirstResponder()
+//    tableView.reloadData()
+//    searchBar.setShowsCancelButton(false, animated: true)
+//  }
+//  
   private func generateSafeArea() {
     let safeAreaView = UIView()
     safeAreaView.backgroundColor = .white
@@ -40,6 +90,7 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
     }
   }
   
+  // MARK: - Button
   private func generateAddInCollectionButton() {
     let image = UIImage(systemName: "plus.circle")
     addInCollectionButton.setBackgroundImage(image, for: .normal)
@@ -65,6 +116,7 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
     present(addInCollectionViewController, animated: true)
   }
   
+  // MARK: - Table View
   private func generateTableView() {
     tableView.delegate = self
     tableView.dataSource = self
@@ -73,7 +125,7 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
     tableView.showsVerticalScrollIndicator = false
     view.addSubview(tableView)
     tableView.snp.makeConstraints { maker in
-      maker.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+      maker.top.equalTo(searchBar.snp.bottom)
       maker.left.right.bottom.equalToSuperview()
     }
   }
