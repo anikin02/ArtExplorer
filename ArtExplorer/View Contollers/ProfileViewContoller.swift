@@ -164,4 +164,17 @@ class ProfileViewContoller: UIViewController, UITableViewDelegate, UITableViewDa
     show(collectionVC, sender: true)
   }
   
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+      if searchCollections.count > 0 {
+        DataModel.removeCollection(searchCollections[indexPath.row])
+        searchCollections.remove(at: indexPath.row)
+      } else {
+        DataModel.collections.remove(at: indexPath.row)
+      }
+      
+      tableView.deleteRows(at: [indexPath], with: .fade)
+    }
+  }
+  
 }

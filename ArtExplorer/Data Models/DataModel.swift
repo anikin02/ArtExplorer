@@ -22,4 +22,10 @@ class DataModel {
       Collection(collection: [], name: "Современное")
     ]
   }
+  
+  static func removeCollection(_ collection: Collection) {
+    if let index = collections.firstIndex(where: { $0.name == collection.name }) {
+      collections.remove(at: index)
+    }
+  }
 }
