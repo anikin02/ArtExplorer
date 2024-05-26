@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		48B5A5D4102096C4036F8347 /* Pods_ArtExplorer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C53627ACDC2FA4D9DB0BF00F /* Pods_ArtExplorer.framework */; };
+		7852AA842C031B0A009AD4C2 /* APIData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7852AA832C031B0A009AD4C2 /* APIData.swift */; };
+		7852AA872C03225E009AD4C2 /* API Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7852AA862C03225E009AD4C2 /* API Manager.swift */; };
 		7858A7FF2BBA40D900127F75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7858A7FE2BBA40D900127F75 /* AppDelegate.swift */; };
 		7858A8012BBA40D900127F75 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7858A8002BBA40D900127F75 /* SceneDelegate.swift */; };
 		7858A8082BBA40DB00127F75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7858A8072BBA40DB00127F75 /* Assets.xcassets */; };
@@ -33,6 +35,8 @@
 /* Begin PBXFileReference section */
 		055AEF65631709EC386F760C /* Pods-ArtExplorer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtExplorer.release.xcconfig"; path = "Target Support Files/Pods-ArtExplorer/Pods-ArtExplorer.release.xcconfig"; sourceTree = "<group>"; };
 		2262C1CCD3EA35B22DAA98BD /* Pods-ArtExplorer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtExplorer.debug.xcconfig"; path = "Target Support Files/Pods-ArtExplorer/Pods-ArtExplorer.debug.xcconfig"; sourceTree = "<group>"; };
+		7852AA832C031B0A009AD4C2 /* APIData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIData.swift; sourceTree = "<group>"; };
+		7852AA862C03225E009AD4C2 /* API Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API Manager.swift"; sourceTree = "<group>"; };
 		7858A7FB2BBA40D900127F75 /* ArtExplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtExplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7858A7FE2BBA40D900127F75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7858A8002BBA40D900127F75 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +82,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7852AA852C03223C009AD4C2 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				7852AA832C031B0A009AD4C2 /* APIData.swift */,
+				7852AA862C03225E009AD4C2 /* API Manager.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		7858A7F22BBA40D900127F75 = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +112,7 @@
 		7858A7FD2BBA40D900127F75 /* ArtExplorer */ = {
 			isa = PBXGroup;
 			children = (
+				7852AA852C03223C009AD4C2 /* API */,
 				7858A8142BBA421C00127F75 /* Resources */,
 				7858A8132BBA41F400127F75 /* View Contollers */,
 				7858A8122BBA41E700127F75 /* Data Models */,
@@ -299,6 +313,7 @@
 				7858A81D2BBAE4AA00127F75 /* EventsViewConroller.swift in Sources */,
 				78CC92A52BE8519100F05899 /* AddInCollectionViewController.swift in Sources */,
 				7858A8232BBB776300127F75 /* RecomendationTableViewCell.swift in Sources */,
+				7852AA872C03225E009AD4C2 /* API Manager.swift in Sources */,
 				78703E852BC3C4B3001DDA87 /* Collection.swift in Sources */,
 				78703E832BC3C323001DDA87 /* ProfileInfo.swift in Sources */,
 				78703E8E2BC4FE30001DDA87 /* CollectionViewController.swift in Sources */,
@@ -306,6 +321,7 @@
 				7858A8012BBA40D900127F75 /* SceneDelegate.swift in Sources */,
 				7858A8212BBAE56600127F75 /* TabBarController.swift in Sources */,
 				78CC92A32BE849FA00F05899 /* DataModel.swift in Sources */,
+				7852AA842C031B0A009AD4C2 /* APIData.swift in Sources */,
 				78703E8C2BC4ADC8001DDA87 /* Event.swift in Sources */,
 				7858A8162BBA454E00127F75 /* Art.swift in Sources */,
 			);

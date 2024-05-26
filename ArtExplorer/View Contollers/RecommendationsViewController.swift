@@ -14,16 +14,49 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
   private var addInCollectionButton = UIButton()
   private var searchBar = UISearchBar()
   
+  private var ids: [Int] = []
   private var arts: [Art] = []
   
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .white
     
-    // TEST DATA
-    arts.append(Art(name: "Моно Лиза", author: "Леонардо Да Винчи", description: "Описание", genre: "Какой-то", date: "1503", image: "testImage1"))
-    arts.append(Art(name: "Звездная ночь", author: "Ван Гог", description: "Описание", genre: "Какой-то", date: "Июнь 1889 – Июль 1889", image: "testImage2"))
-    //
+    APIManager.shared.getObject(id: 15305) { [weak self] value in
+      DispatchQueue.main.async {
+        guard let self else { return }
+        self.arts.append(value)
+        self.tableView.reloadData()
+      }
+    }
+    APIManager.shared.getObject(id: 10958) { [weak self] value in
+      DispatchQueue.main.async {
+        guard let self else { return }
+        self.arts.append(value)
+        self.tableView.reloadData()
+      }
+    }
+    APIManager.shared.getObject(id: 283095) { [weak self] value in
+      DispatchQueue.main.async {
+        guard let self else { return }
+        self.arts.append(value)
+        self.tableView.reloadData()
+      }
+    }
+    
+//    APIManager.shared.getObjectIDs() { [weak self] values in 
+//      guard let self else { return }
+//      self.ids = values
+//      for id in ids {
+//        APIManager.shared.getObject(id: id) { [weak self] value in
+//          guard let self else { return }
+//          self.arts.append(value)
+//        }
+//        if arts.count > 50 {
+//          break
+//        }
+//      }
+//      tableView.reloadData()
+//    }
     
     generateSafeArea()
     generateSearchBar()

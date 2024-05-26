@@ -36,10 +36,17 @@ class RecomendationTableViewCell: UITableViewCell {
     descriptionButton.tintColor = .systemPink
     
     let imageView = UIImageView()
-    imageView.image = UIImage(named: art.image)
     imageView.contentMode = .scaleAspectFit
     contentView.addSubview(imageView)
-    
+    if let imageUrl = URL(string: art.image) {
+        DispatchQueue.global().async {
+            if let imageData = try? Data(contentsOf: imageUrl) {
+                DispatchQueue.main.async {
+                    imageView.image = UIImage(data: imageData)
+                }
+            }
+        }
+    }
     contentView.addSubview(nameLabel)
     contentView.addSubview(authorLabel)
     contentView.addSubview(descriptionButton)
