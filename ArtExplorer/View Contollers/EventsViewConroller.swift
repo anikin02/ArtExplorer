@@ -17,12 +17,8 @@ class EventsViewConroller: UIViewController, UITableViewDelegate, UITableViewDat
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .white
+    allEventsCollection = APIManager.shared.getEvents()
     
-    // TEST DATA
-    for i in 0...15 {
-      allEventsCollection.append(Event(name: "Название \(i)", location: "Локация \(i)", date: "Весна 2024", description: "очень интересно"))
-    }
-    //
     
     generateSafeArea()
     generateSearchBar()

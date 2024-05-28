@@ -36,10 +36,18 @@ class EventsViewControllerCell: UITableViewCell {
     imageLocationView.contentMode = .scaleAspectFit
     imageLocationView.tintColor = .systemPink
     
+    contentView.addSubview(dateLabel)
+    
+    dateLabel.snp.makeConstraints { make in
+      make.centerY.equalTo(contentView.snp.centerY)
+      make.right.equalTo(contentView.snp.right).offset(-20)
+    }
+    
     contentView.addSubview(nameLabel)
     nameLabel.snp.makeConstraints { make in
       make.top.equalTo(contentView.snp.top).offset(10)
       make.left.equalTo(contentView.snp.left).offset(20)
+      make.right.lessThanOrEqualTo(dateLabel.snp.left).offset(-10)
     }
     
     contentView.addSubview(imageLocationView)
@@ -56,12 +64,5 @@ class EventsViewControllerCell: UITableViewCell {
       make.centerY.equalTo(imageLocationView.snp.centerY)
       make.left.equalTo(imageLocationView.snp.right)
     }
-    contentView.addSubview(dateLabel)
-    
-    dateLabel.snp.makeConstraints { make in
-      make.centerY.equalTo(contentView.snp.centerY)
-      make.right.equalTo(contentView.snp.right).offset(-20)
-    }
-    
   }
 }

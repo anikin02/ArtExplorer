@@ -49,14 +49,7 @@ class TabBarController: UITabBarController {
   }
   
   func changeColor(tabBarController: UITabBarController?, colorBG: UIColor, colorTint: UIColor) {
-    let appearance = UITabBarAppearance()
-    appearance.backgroundColor = colorBG
-    appearance.selectionIndicatorTintColor = colorTint
-    appearance.shadowColor = nil
-    tabBarController?.tabBar.standardAppearance = appearance
-        
-    if #available(iOS 15.0, *) {
-      tabBarController?.tabBar.scrollEdgeAppearance = appearance
-    }
+    tabBar.backgroundColor = colorBG
+    tabBar.tintColor = colorTint
   }
 }

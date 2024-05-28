@@ -23,12 +23,6 @@ class StudyViewController: UIViewController, UITableViewDelegate, UITableViewDat
       self.allStudyCollection = APIManager.shared.getStudies()
     }
     
-    // TEST DATA
-    for i in 0...20 {
-      allStudyCollection.append(Study(name: "Название \(i)", author: "Автор \(i)", text: "", link: ""))
-    }
-    //
-    
     generateSafeArea()
     generateSearchBar()
     generateTableView()

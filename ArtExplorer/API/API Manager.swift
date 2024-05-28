@@ -67,4 +67,35 @@ class APIManager {
     
     return []
   }
+  
+  func getEvents() -> [Event]{
+    let stringURL: String = "https://www.galleriesnow.net/exhibitions/europe/"
+    guard let url = URL(string: stringURL) else { return [] }
+    do {
+      let htmlString = try String(contentsOf: url, encoding: .utf8)
+      let htmlContent = htmlString
+      
+      do {
+        let documet = try SwiftSoup.parse(htmlContent)
+        do {
+          let elements = try documet.getElementsByClass("exhibition-box")
+          var result = [Event]()
+          for element in elements {
+            let name = try String(try element.getElementsByClass("extb-1").first()?.getElementsByClass("box-show-link glinks").first()?.text() ?? "")
+            if name == "" {
+              continue
+            }
+            let location = try String(element.getElementsByClass("citynameRow").first()?.text() ?? "")
+            let description = try String(element.getElementsByClass("glinks snippet-text").first()?.text() ?? "")
+            let date = try element.getElementsByClass("col-md-12").indices.contains(1) ? String(element.getElementsByClass("col-md-12")[1].text() ?? "") : ""
+//            let link = try String(element.getElementsByClass("sc-d56bc236-10 tdBWn").first()?.text() ?? "")
+            result.append(Event(name: name, location: location, date: date, description: description, link: ""))
+          }
+          return result
+        }
+      }
+    } catch let error { print(error) }
+    
+    return []
+  }
 }
