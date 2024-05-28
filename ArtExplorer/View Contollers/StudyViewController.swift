@@ -19,16 +19,20 @@ class StudyViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     view.backgroundColor = .white
     
+    DispatchQueue.main.async {
+      self.allStudyCollection = APIManager.shared.getStudies()
+    }
+    
     // TEST DATA
     for i in 0...20 {
-      allStudyCollection.append(Study(name: "Название \(i)", author: "Автор \(i)", text: ""))
+      allStudyCollection.append(Study(name: "Название \(i)", author: "Автор \(i)", text: "", link: ""))
     }
     //
     
     generateSafeArea()
     generateSearchBar()
     generateTableView()
-    
+    searchStudyCollection = APIManager.shared.getStudies()
   }
   
   private func generateSafeArea() {

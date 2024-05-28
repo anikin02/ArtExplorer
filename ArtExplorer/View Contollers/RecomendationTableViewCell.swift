@@ -7,7 +7,6 @@
 
 import UIKit
 import SnapKit
-import SDWebImage
 
 class RecomendationTableViewCell: UITableViewCell {
   
@@ -38,18 +37,9 @@ class RecomendationTableViewCell: UITableViewCell {
     
     let imageView = UIImageView()
     imageView.contentMode = .scaleAspectFit
-    //guard let url = URL(string: "https://www.artic.edu/iiif/2/\(art.image)/full/843,/0/default.png") else { return }
     
-    if let imageUrl = URL(string: "https://www.artic.edu/iiif/2/\(art.image)/full/843,/0/default.jpg") {
-        // Загружаем изображение с использованием URL
-        DispatchQueue.global().async {
-            if let imageData = try? Data(contentsOf: imageUrl) {
-                // Создаем UIImage из загруженных данных и устанавливаем его в UIImageView
-                DispatchQueue.main.async {
-                    imageView.image = UIImage(data: imageData)
-                }
-            }
-        }
+    APIManager.shared.getImage(imageID: art.image) { image in
+      imageView.image = image
     }
     
     contentView.addSubview(imageView)
@@ -64,6 +54,7 @@ class RecomendationTableViewCell: UITableViewCell {
       make.top.equalToSuperview()
       make.centerX.equalTo(contentView.snp.centerX)
       make.height.lessThanOrEqualTo(contentView.snp.height).offset(-230)
+      make.width.lessThanOrEqualTo(contentView.snp.width)
     }
     
     nameLabel.snp.makeConstraints { make in

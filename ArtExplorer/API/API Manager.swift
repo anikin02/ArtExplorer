@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import UIKit
+import SwiftSoup
 
 class APIManager {
   static let shared = APIManager()
@@ -27,42 +29,42 @@ class APIManager {
     task.resume()
   }
   
-//  func getObjectIDs(completion: @escaping ([Int]) -> Void ) {
-//    let urlString: String = "https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=love"
-//    guard let url = URL(string: urlString) else { return }
-//    let request = URLRequest(url: url)
-//    
-//    let task = URLSession.shared.dataTask(with: request) { data, response, error in
-//      guard let data = data else { return }
-//      if let objectIDs = try? JSONDecoder().decode(ObjectIDs.self, from: data) {
-//        completion(objectIDs.objectIDs)
-//      } else {
-//        print("ERROR")
-//      }
-//    }
-//    task.resume()
-//  }
-//  
-//  func getObject(id: Int, completion: @escaping (Art) -> Void ) {
-//    let urlString: String = "https://collectionapi.metmuseum.org/public/collection/v1/objects/\(id)"
-//    guard let url = URL(string: urlString) else { return }
-//    let request = URLRequest(url: url)
-//    let task = URLSession.shared.dataTask(with: request) { data, response, error in
-//      guard let data = data else { return }
-//      if let object = try? JSONDecoder().decode(Object.self, from: data) {
-//        if object.primaryImageSmall != "" && object.artistDisplayName != "" {
-//          let art = Art(name: object.title,
-//                        author: object.artistDisplayName,
-//                        description: "",
-//                        genre: "",
-//                        date: object.objectDate,
-//                        image: object.primaryImageSmall)
-//          completion(art)
-//        }
-//      } else {
-//        print("ERROR")
-//      }
-//    }
-//    task.resume()
-//  }
+  func getImage(imageID: String, completion: @escaping (UIImage?) -> Void) {
+    if let imageUrl = URL(string: "https://www.artic.edu/iiif/2/\(imageID)/full/843,/0/default.jpg") {
+      DispatchQueue.global().async {
+        if let imageData = try? Data(contentsOf: imageUrl) {
+          DispatchQueue.main.async {
+            completion(UIImage(data: imageData))
+          }
+        }
+      }
+    }
+  }
+  
+  func getStudies() -> [Study]{
+    let stringURL: String = "https://aeon.co/culture/art"
+    guard let url = URL(string: stringURL) else { return [] }
+    do {
+      let htmlString = try String(contentsOf: url, encoding: .utf8)
+      let htmlContent = htmlString
+      
+      do {
+        let documet = try SwiftSoup.parse(htmlContent)
+        do {
+          let elements = try documet.getElementsByClass("sc-d56bc236-9 iGZwDd")
+          var result = [Study]()
+          for element in elements {
+            let name = try String(element.getElementsByClass("sc-d56bc236-10 tdBWn").first()?.text() ?? "")
+            let author = try String(element.getElementsByClass("sc-d56bc236-0 sc-d56bc236-12 iOJnhy dFhhBp").first()?.text() ?? "Without the author")
+            let text = try String(element.getElementsByClass("sc-d56bc236-10 tdBWn").first()?.text() ?? "")
+            let link = try String(element.getElementsByClass("sc-d56bc236-10 tdBWn").first()?.text() ?? "")
+            result.append(Study(name: name, author: author, text: text, link: link))
+          }
+          return result
+        }
+      }
+    } catch let error { print(error) }
+    
+    return []
+  }
 }
