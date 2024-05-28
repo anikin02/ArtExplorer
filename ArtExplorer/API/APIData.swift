@@ -2,24 +2,23 @@
 //  APIData.swift
 //  ArtExplorer
 //
-//  Created by Данил Аникин on 26.05.2024.
+//  Created by anikin02 on 26.05.2024.
 //
 
 import Foundation
 
-// MARK: - ObjectIDs
-struct ObjectIDs: Codable {
-    let total: Int
-    let objectIDs: [Int]
+// MARK: - Objects
+struct Objects: Codable {
+    let data: [Datum]
 }
 
-// MARK: - Object
-struct Object: Codable {
-    let objectID: Int
-    let primaryImage: String
+// MARK: - Datum
+struct Datum: Codable {
+    let id: Int
     let title: String
-    let period, dynasty, reign, portfolio: String
-    let artistDisplayName: String
-    let objectDate: String
-    let objectURL: String
+    let description: String?
+    let artist_title: String?
+    let style_id, style_title: String?
+    let image_id: String?
+    let date_end: Int?
 }

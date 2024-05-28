@@ -15,52 +15,17 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
   private var searchBar = UISearchBar()
   
   private var ids: [Int] = []
-  private var arts: [Art] = []
+  private var arts: [Art] = DataModel.arts
   
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .white
-    
-    APIManager.shared.getObject(id: 15305) { [weak self] value in
-      DispatchQueue.main.async {
-        guard let self else { return }
-        self.arts.append(value)
-        self.tableView.reloadData()
-      }
-    }
-    APIManager.shared.getObject(id: 10958) { [weak self] value in
-      DispatchQueue.main.async {
-        guard let self else { return }
-        self.arts.append(value)
-        self.tableView.reloadData()
-      }
-    }
-    APIManager.shared.getObject(id: 283095) { [weak self] value in
-      DispatchQueue.main.async {
-        guard let self else { return }
-        self.arts.append(value)
-        self.tableView.reloadData()
-      }
-    }
-    
-//    APIManager.shared.getObjectIDs() { [weak self] values in 
-//      guard let self else { return }
-//      self.ids = values
-//      for id in ids {
-//        APIManager.shared.getObject(id: id) { [weak self] value in
-//          guard let self else { return }
-//          self.arts.append(value)
-//        }
-//        if arts.count > 50 {
-//          break
-//        }
-//      }
-//      tableView.reloadData()
-//    }
+    arts = DataModel.arts
     
     generateSafeArea()
     generateSearchBar()
     generateTableView()
+
     generateAddInCollectionButton()
   }
   
@@ -172,7 +137,6 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-      return view.frame.height - view.safeAreaInsets.top - view.safeAreaInsets.bottom
+      return tableView.bounds.size.height
   }
-
 }
