@@ -13,11 +13,13 @@ class Study {
   let author: String
   let text: String
   let link: String
+  let image: String
   
-  init(name: String, author: String, text: String, link: String) {
+  init(name: String, author: String, text: String, link: String, image: String) {
     self.name = name
     self.author = author
     self.text = text
     self.link = link
+    self.image = image
   }
 }

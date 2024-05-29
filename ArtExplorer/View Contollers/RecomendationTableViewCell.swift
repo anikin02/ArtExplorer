@@ -38,7 +38,7 @@ class RecomendationTableViewCell: UITableViewCell {
     let imageView = UIImageView()
     imageView.contentMode = .scaleAspectFit
     
-    APIManager.shared.getImage(imageID: art.image) { image in
+    APIManager.shared.getImage(imageURL: "https://www.artic.edu/iiif/2/\(art.image)/full/843,/0/default.jpg") { image in
       imageView.image = image
     }
     

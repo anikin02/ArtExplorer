@@ -17,8 +17,11 @@ class EventsViewConroller: UIViewController, UITableViewDelegate, UITableViewDat
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .white
-    allEventsCollection = APIManager.shared.getEvents()
     
+    DispatchQueue.main.async {
+      self.allEventsCollection = APIManager.shared.getEvents()
+      self.tableView.reloadData()
+    }
     
     generateSafeArea()
     generateSearchBar()
@@ -85,7 +88,6 @@ class EventsViewConroller: UIViewController, UITableViewDelegate, UITableViewDat
   private func generateTableView() {
     tableView.delegate = self
     tableView.dataSource = self
-    tableView.allowsSelection = false
     tableView.showsVerticalScrollIndicator = false
     view.addSubview(tableView)
     tableView.snp.makeConstraints { maker in
@@ -104,6 +106,19 @@ class EventsViewConroller: UIViewController, UITableViewDelegate, UITableViewDat
     if searchEventsCollection.count > 0 {
       return EventsViewControllerCell(event: searchEventsCollection[indexPath.row])
     } else { return EventsViewControllerCell(event: allEventsCollection[indexPath.row]) }
+  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+//    if searchCollections.count > 0 {
+//      collections = searchCollections
+//    } else {
+//      collections = DataModel.collections
+//    }
+    
+    let selectedEvent = allEventsCollection[indexPath.row]
+    let collectionVC = DetailEventViewController(event: selectedEvent)
+    show(collectionVC, sender: true)
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

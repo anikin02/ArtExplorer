@@ -89,7 +89,7 @@ class StudyViewController: UIViewController, UITableViewDelegate, UITableViewDat
   private func generateTableView() {
     tableView.delegate = self
     tableView.dataSource = self
-    tableView.allowsSelection = false
+    //tableView.allowsSelection = false
     tableView.showsVerticalScrollIndicator = false
     view.addSubview(tableView)
     tableView.snp.makeConstraints { maker in
@@ -120,5 +120,18 @@ class StudyViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     return cell
   }
-
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    var collections = [Collection]()
+    
+//    if searchCollections.count > 0 {
+//      collections = searchCollections
+//    } else {
+//      collections = DataModel.collections
+//    }
+    
+    let selectedStudy = allStudyCollection[indexPath.row]
+    let collectionVC = DetailStudyViewController(study: selectedStudy)
+    show(collectionVC, sender: true)
+  }
 }

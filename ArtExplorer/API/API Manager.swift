@@ -29,8 +29,8 @@ class APIManager {
     task.resume()
   }
   
-  func getImage(imageID: String, completion: @escaping (UIImage?) -> Void) {
-    if let imageUrl = URL(string: "https://www.artic.edu/iiif/2/\(imageID)/full/843,/0/default.jpg") {
+  func getImage(imageURL: String, completion: @escaping (UIImage?) -> Void) {
+    if let imageUrl = URL(string: imageURL) {
       DispatchQueue.global().async {
         if let imageData = try? Data(contentsOf: imageUrl) {
           DispatchQueue.main.async {
@@ -56,9 +56,15 @@ class APIManager {
           for element in elements {
             let name = try String(element.getElementsByClass("sc-d56bc236-10 tdBWn").first()?.text() ?? "")
             let author = try String(element.getElementsByClass("sc-d56bc236-0 sc-d56bc236-12 iOJnhy dFhhBp").first()?.text() ?? "Without the author")
-            let text = try String(element.getElementsByClass("sc-d56bc236-10 tdBWn").first()?.text() ?? "")
+            let text = try String(element.getElementsByClass("sc-d56bc236-11 hYbLtW").first()?.text() ?? "")
             let link = try String(element.getElementsByClass("sc-d56bc236-10 tdBWn").first()?.text() ?? "")
-            result.append(Study(name: name, author: author, text: text, link: link))
+            var imageURLString: String = ""
+            if let imgElement = try element.getElementsByClass("sc-82db9615-2 jowSfL").first()?.select("img").first() {
+              imageURLString = try String(imgElement.attr("src"))
+            } else {
+              imageURLString = ""
+            }
+            result.append(Study(name: name, author: author, text: text, link: link, image: imageURLString))
           }
           return result
         }

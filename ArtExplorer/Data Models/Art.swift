@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Art {
   let name: String
@@ -13,7 +14,8 @@ class Art {
   let description: String
   let genre: String
   let date: String
-  let image: String // : ???
+  let image: String
+  var imageData: UIImage?
   
   init(name: String, author: String, description: String, genre: String, date: String, image: String) {
     self.name = name
