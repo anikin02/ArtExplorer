@@ -25,5 +25,4 @@ class Art {
     self.date = date
     self.image = image
   }
-  
 }

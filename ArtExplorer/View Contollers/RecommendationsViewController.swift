@@ -13,6 +13,7 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
   private var tableView = UITableView()
   private var addInCollectionButton = UIButton()
   private var searchBar = UISearchBar()
+  private var searchArtCollection = [Art]()
   
   private var ids: [Int] = []
   private var arts: [Art] = DataModel.arts
@@ -21,12 +22,27 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
     super.viewDidLoad()
     view.backgroundColor = .white
     arts = DataModel.arts
+    recomendationTop()
+    
     
     generateSafeArea()
     generateSearchBar()
     generateTableView()
 
     generateAddInCollectionButton()
+  }
+  
+  private func recomendationTop() {
+    arts.sort {
+      (DataModel.recomendationKeysAuthor.contains($0.author) ||
+       DataModel.recomendationKeysGenere.contains($0.genre) ||
+       DataModel.recomendationKeysSearch.contains($0.author) ||
+       DataModel.recomendationKeysSearch.contains($0.genre)
+      )  && !(DataModel.recomendationKeysAuthor.contains($1.author) ||
+             DataModel.recomendationKeysGenere.contains($1.genre) ||
+             DataModel.recomendationKeysSearch.contains($1.author) ||
+             DataModel.recomendationKeysSearch.contains($1.genre))
+    }
   }
   
   // MARK: - Search Bar
@@ -54,28 +70,24 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
   }
   
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-    var searchArtCollection = [Art]()
     if let searchText = searchBar.text {
       searchArtCollection = getSearchArtCollection(key: searchText)
+      searchBar.showsCancelButton = true
+      if let cancelButton = searchBar.value(forKey: "cancelButton") as? UIButton {
+        cancelButton.setTitleColor(.systemPink, for: .normal)
+      }
+      tableView.reloadData()
     }
-    
-    if searchArtCollection.count > 0 {
-      let searchView = CollectionViewController(collection: Collection(collection: searchArtCollection, name: ""))
-      
-      present(searchView, animated: true)
-      searchBar.text = ""
-    }
-    searchBar.resignFirstResponder()
   }
-//  
-//  func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-//    searchBar.text = ""
-//    searchStudyCollection = []
-//    searchBar.resignFirstResponder()
-//    tableView.reloadData()
-//    searchBar.setShowsCancelButton(false, animated: true)
-//  }
-//  
+  
+  func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    searchBar.text = ""
+    searchArtCollection = []
+    searchBar.resignFirstResponder()
+    tableView.reloadData()
+    searchBar.setShowsCancelButton(false, animated: true)
+  }
+  
   private func generateSafeArea() {
     let safeAreaView = UIView()
     safeAreaView.backgroundColor = .white
@@ -129,11 +141,15 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return arts.count
+    if searchArtCollection.isEmpty {
+      return arts.count
+    } else { return searchArtCollection.count }
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    return RecomendationTableViewCell(art: arts[indexPath.row])
+    if searchArtCollection.isEmpty {
+      return RecomendationTableViewCell(art: arts[indexPath.row])
+    } else { return RecomendationTableViewCell(art: searchArtCollection[indexPath.row]) }
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

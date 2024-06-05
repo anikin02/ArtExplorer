@@ -14,6 +14,7 @@ class Study {
   let text: String
   let link: String
   let image: String
+  // let date: String
   
   init(name: String, author: String, text: String, link: String, image: String) {
     self.name = name

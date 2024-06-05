@@ -169,11 +169,16 @@ class ProfileViewContoller: UIViewController, UITableViewDelegate, UITableViewDa
       if searchCollections.count > 0 {
         DataModel.removeCollection(searchCollections[indexPath.row])
         searchCollections.remove(at: indexPath.row)
+        if searchCollections.isEmpty {
+          tableView.reloadData()
+          searchBar.text = ""
+        } else {
+          tableView.deleteRows(at: [indexPath], with: .fade)
+        }
       } else {
         DataModel.collections.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .fade)
       }
-      
-      tableView.deleteRows(at: [indexPath], with: .fade)
     }
   }
   

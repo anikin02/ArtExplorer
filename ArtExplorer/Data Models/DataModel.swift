@@ -8,10 +8,15 @@
 import Foundation
 
 class DataModel {
-  static var objectIDs: [Int] = []
   static var arts: [Art] = []
   static var collections = [Collection]()
-  static var recomendationKeys = [String]()
+  static var recomendationKeysAuthor = [String]()
+  static var recomendationKeysGenere = [String]()
+  static var recomendationKeysSearch = [String]()
+  
+  static var artScopeTitles: Set<String> = ["All"]
+  static var eventScopeTitles: Set<String> = ["All"]
+  static var studyScopeTitles: Set<String> = ["All"]
   
   static func loadCollections() {
     let collection1 = Collection(collection: [Art(name: "Моно Лиза", author: "Леонардо Да Винчи", description: "Описание", genre: "Какой-то", date: "1503", image: "testImage1"), Art(name: "Звездная ночь", author: "Ван Гог", description: "Описание", genre: "Какой-то", date: "Июнь 1889 – Июль 1889", image: "testImage2")], name: "Любимое Ван Гог")
@@ -24,6 +29,8 @@ class DataModel {
       Collection(collection: [], name: "Пейзажи"),
       Collection(collection: [], name: "Современное")
     ]
+    
+    recomendationKeysAuthor = ["Vincent van Gogh", "Pablo Picasso"]
   }
   
   static func parseArt(objects: [Datum]) {

@@ -8,11 +8,11 @@
 import UIKit
 import SnapKit
 
-class CollectionViewController: UIViewController {
-  let stackView = UIStackView()
-  let scrollView = UIScrollView()
-  let collection: Collection
-  
+class CollectionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+  private let collection: Collection
+  private var tableView = UITableView()
+  private var addInCollectionButton = UIButton()
+
   init(collection: Collection) {
     self.collection = collection
     super.init(nibName: nil, bundle: nil)
@@ -24,35 +24,41 @@ class CollectionViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    scrollView.translatesAutoresizingMaskIntoConstraints = false
-    
-    stackView.axis = .vertical
-    stackView.alignment = .fill
-    stackView.distribution = .fillEqually
-    stackView.spacing = 10
-    
-    for art in collection.collection {
-      if let image = UIImage(named: art.image) {
-        let imageView = UIImageView(image: image)
-        imageView.contentMode = .scaleAspectFit
-        stackView.addArrangedSubview(imageView)
-        imageView.snp.makeConstraints { maker in
-          maker.height.equalTo(300)
-        }
-      }
+    view.backgroundColor = .white
+    generateTableView()
+  }
+  
+  
+  // MARK: - Table View
+  private func generateTableView() {
+    tableView.delegate = self
+    tableView.dataSource = self
+    tableView.isPagingEnabled = true
+    tableView.allowsSelection = false
+    tableView.showsVerticalScrollIndicator = false
+    view.addSubview(tableView)
+    tableView.snp.makeConstraints { maker in
+      maker.top.equalTo(view.snp.top)
+      maker.left.right.bottom.equalToSuperview()
     }
-    
-    view.addSubview(scrollView)
-    scrollView.snp.makeConstraints { maker in
-      maker.edges.equalToSuperview()
-    }
-    
-    scrollView.addSubview(stackView)
-    
-    stackView.snp.makeConstraints { maker in
-      maker.edges.equalToSuperview()
-      maker.width.equalToSuperview()
+  }
+  
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return collection.collection.count
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    return RecomendationTableViewCell(art: collection.collection[indexPath.row])
+  }
+  
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+      return tableView.bounds.size.height
+  }
+  
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+      collection.collection.remove(at: indexPath.row)
+      tableView.deleteRows(at: [indexPath], with: .fade)
     }
   }
 }

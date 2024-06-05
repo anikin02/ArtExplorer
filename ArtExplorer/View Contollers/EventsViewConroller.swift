@@ -13,7 +13,7 @@ class EventsViewConroller: UIViewController, UITableViewDelegate, UITableViewDat
   private let searchBar = UISearchBar()
   private var allEventsCollection = [Event]()
   private var searchEventsCollection = [Event]()
-
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .white
@@ -31,7 +31,7 @@ class EventsViewConroller: UIViewController, UITableViewDelegate, UITableViewDat
   private func generateSafeArea() {
     let safeAreaView = UIView()
     safeAreaView.backgroundColor = .white
-
+    
     view.addSubview(safeAreaView)
     safeAreaView.snp.makeConstraints { maker in
       maker.top.equalTo(view.snp.top)
@@ -43,6 +43,7 @@ class EventsViewConroller: UIViewController, UITableViewDelegate, UITableViewDat
   private func generateSearchBar() {
     searchBar.delegate = self
     searchBar.placeholder = "Search..."
+    searchBar.scopeButtonTitles = Array(DataModel.eventScopeTitles)
     view.addSubview(searchBar)
     
     searchBar.snp.makeConstraints { maker in
@@ -54,11 +55,16 @@ class EventsViewConroller: UIViewController, UITableViewDelegate, UITableViewDat
   func getSearchEventsCollection(key: String) -> [Event] {
     var result = [Event]()
     for event in allEventsCollection {
-      if event.name.lowercased().contains(key.lowercased()) {
+      if event.name.lowercased().contains(key.lowercased()) ||
+          event.location.lowercased().contains(key.lowercased()) {
         result.append(event)
       }
     }
     return result
+  }
+  
+  func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+    
   }
   
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -110,11 +116,11 @@ class EventsViewConroller: UIViewController, UITableViewDelegate, UITableViewDat
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
-//    if searchCollections.count > 0 {
-//      collections = searchCollections
-//    } else {
-//      collections = DataModel.collections
-//    }
+    //    if searchCollections.count > 0 {
+    //      collections = searchCollections
+    //    } else {
+    //      collections = DataModel.collections
+    //    }
     
     let selectedEvent = allEventsCollection[indexPath.row]
     let collectionVC = DetailEventViewController(event: selectedEvent)
@@ -122,7 +128,7 @@ class EventsViewConroller: UIViewController, UITableViewDelegate, UITableViewDat
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-      return 64
+    return 64
   }
-
+  
 }
