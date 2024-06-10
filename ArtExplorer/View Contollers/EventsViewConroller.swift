@@ -20,6 +20,7 @@ class EventsViewConroller: UIViewController, UITableViewDelegate, UITableViewDat
     
     DispatchQueue.main.async {
       self.allEventsCollection = APIManager.shared.getEvents()
+      self.searchBar.scopeButtonTitles = self.getScopeBarTitles()
       self.tableView.reloadData()
     }
     
@@ -43,13 +44,23 @@ class EventsViewConroller: UIViewController, UITableViewDelegate, UITableViewDat
   private func generateSearchBar() {
     searchBar.delegate = self
     searchBar.placeholder = "Search..."
-    searchBar.scopeButtonTitles = Array(DataModel.eventScopeTitles)
+    searchBar.showsScopeBar = false
     view.addSubview(searchBar)
     
     searchBar.snp.makeConstraints { maker in
       maker.top.equalTo(view.safeAreaLayoutGuide.snp.top)
       maker.left.right.equalToSuperview()
     }
+  }
+  
+  private func getScopeBarTitles() -> [String] {
+    var result: Set<String> = ["All"]
+    
+    for event in allEventsCollection {
+      result.insert(event.location)
+    }
+    
+    return Array(result)
   }
   
   func getSearchEventsCollection(key: String) -> [Event] {
@@ -89,6 +100,16 @@ class EventsViewConroller: UIViewController, UITableViewDelegate, UITableViewDat
     searchBar.resignFirstResponder()
     tableView.reloadData()
     searchBar.setShowsCancelButton(false, animated: true)
+  }
+  
+  func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+    searchBar.showsScopeBar = true
+    searchBar.sizeToFit()
+  }
+  
+  func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+    searchBar.showsScopeBar = false
+    searchBar.sizeToFit()
   }
   
   private func generateTableView() {

@@ -96,7 +96,6 @@ class APIManager {
             let date = try element.getElementsByClass("col-md-12").indices.contains(1) ? String(element.getElementsByClass("col-md-12")[1].text() ?? "") : ""
 //            let link = try String(element.getElementsByClass("sc-d56bc236-10 tdBWn").first()?.text() ?? "")
             result.append(Event(name: name, location: location, date: date, description: description, link: ""))
-            DataModel.eventScopeTitles.insert(location)
           }
           return result
         }

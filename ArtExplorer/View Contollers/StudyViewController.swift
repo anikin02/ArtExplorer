@@ -43,6 +43,7 @@ class StudyViewController: UIViewController, UITableViewDelegate, UITableViewDat
   
   private func generateSearchBar() {
     searchBar.delegate = self
+    searchBar.scopeButtonTitles = ["All", "Essay", "Video"]
     searchBar.placeholder = "Search..."
     view.addSubview(searchBar)
     
@@ -54,6 +55,15 @@ class StudyViewController: UIViewController, UITableViewDelegate, UITableViewDat
   
   private func getSearchStudyCollection(key: String) -> [Study] {
     var result = [Study]()
+    if searchStudyCollection.count > 0 {
+      for study in searchStudyCollection {
+        if study.name.lowercased().contains(key.lowercased()) {
+          result.append(study)
+        }
+      }
+      return result
+    }
+    
     for study in allStudyCollection {
       if study.name.lowercased().contains(key.lowercased()) {
         result.append(study)
@@ -86,10 +96,41 @@ class StudyViewController: UIViewController, UITableViewDelegate, UITableViewDat
     searchBar.setShowsCancelButton(false, animated: true)
   }
   
+  func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+    searchBar.showsScopeBar = true
+    searchBar.sizeToFit()
+  }
+  
+  func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+    searchBar.showsScopeBar = false
+    searchBar.sizeToFit()
+  }
+  
+  func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+    if selectedScope == 0 {
+      searchStudyCollection = []
+      searchBar.text = ""
+    } else if selectedScope == 1 {
+      searchStudyCollection = []
+      for study in allStudyCollection {
+        if study.author != "Without the author" {
+          searchStudyCollection.append(study)
+        }
+      }
+    } else if selectedScope == 2 {
+      searchStudyCollection = []
+      for study in allStudyCollection {
+        if study.author == "Without the author" {
+          searchStudyCollection.append(study)
+        }
+      }
+    }
+    tableView.reloadData()
+  }
+  
   private func generateTableView() {
     tableView.delegate = self
     tableView.dataSource = self
-    //tableView.allowsSelection = false
     tableView.showsVerticalScrollIndicator = false
     view.addSubview(tableView)
     tableView.snp.makeConstraints { maker in
@@ -122,15 +163,15 @@ class StudyViewController: UIViewController, UITableViewDelegate, UITableViewDat
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    var collections = [Collection]()
+    var collections = [Study]()
     
-//    if searchCollections.count > 0 {
-//      collections = searchCollections
-//    } else {
-//      collections = DataModel.collections
-//    }
+    if searchStudyCollection.count > 0 {
+      collections = searchStudyCollection
+    } else {
+      collections = allStudyCollection
+    }
     
-    let selectedStudy = allStudyCollection[indexPath.row]
+    let selectedStudy = collections[indexPath.row]
     let collectionVC = DetailStudyViewController(study: selectedStudy)
     show(collectionVC, sender: true)
   }
